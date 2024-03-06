@@ -1,0 +1,10 @@
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+
+  right: 0;
+  position: absolute;
+  margin-top: 35px;
+  margin-right: 35px;
+}

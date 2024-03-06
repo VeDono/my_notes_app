@@ -1,0 +1,36 @@
+.noteCard {
+  background-color: #fff;
+  border-radius: 6px;
+  position: relative;
+
+
+  width: 350px;
+  height: 260px;
+
+  &__editBtn {
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 60px;
+    
+    position: absolute;
+  }
+
+  &__closeBtn {
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    
+    position: absolute;
+  }
+
+  &__container {
+    margin: 25px;
+    overflow-wrap: break-word;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+}
