@@ -7,6 +7,12 @@ import styles from './NoteCard.module.scss';
 
 import { actions as notesActions } from '../../features/notes';
 
+import { SERVER_URL } from '../../config';
+
+import trashCanIcon from '../../images/icons/trash-can-icon.svg';
+import editPenIcon from '../../images/icons/pen-to-square-icon.svg';
+import scaleNoteIcon from '../../images/icons/scale-note-icon.svg';
+
 type Props = {
   note: NoteType;
 };
@@ -14,18 +20,24 @@ type Props = {
 export function NoteCard({ note }: Props) {
   const dispatch = useAppDispatch();
 
+  const selectNote = () => {
+    dispatch(notesActions.setSelectedNote(note));
+  };
+
   const startEditing = () => {
     dispatch(notesActions.setEditingNote(note));
   };
 
   const deleteNote = () => {
-    axios
-      .delete(`http://localhost:5000/notes/${note.id}`)
-      .then(() => {
-        dispatch(notesActions.deleteNote(note.id));
-      })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.log(err));
+    if (window.confirm('Are you sure you want to delete the note?')) {
+      axios
+        .delete(`${SERVER_URL}/${note.id}`)
+        .then(() => {
+          dispatch(notesActions.deleteNote(note.id));
+        })
+        // eslint-disable-next-line no-console
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -41,7 +53,7 @@ export function NoteCard({ note }: Props) {
         type="button"
         onClick={startEditing}
       >
-        edit
+        <img src={editPenIcon} alt="edit-pen-icon" />
       </button>
 
       <button
@@ -49,7 +61,15 @@ export function NoteCard({ note }: Props) {
         type="button"
         onClick={deleteNote}
       >
-        X
+        <img src={trashCanIcon} alt="trash-can-icon" />
+      </button>
+
+      <button
+        className={styles.noteCard__selectBtn}
+        type="button"
+        onClick={selectNote}
+      >
+        <img src={scaleNoteIcon} alt="scale-note-icon" />
       </button>
     </article>
   );

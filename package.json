@@ -1,6 +1,7 @@
 {
   "name": "my_notes_app_front-end",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -13,6 +14,7 @@
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "react-redux": "^9.1.0",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
@@ -23,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier . --ignore-path .prettierignore --write",
@@ -58,7 +61,9 @@
   "devDependencies": {
     "@mate-academy/eslint-config": "^0.0.25",
     "@mate-academy/eslint-config-react-typescript": "^1.0.13",
+    "@types/react-modal": "^3.16.3",
     "eslint": "^8.57.0",
+    "gh-pages": "^6.1.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5"

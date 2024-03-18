@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { actions as notesActions } from '../../features/notes';
 
+import { SERVER_URL } from '../../config';
+
 export function NoteForm() {
   const [inputValue, setInputValue] = useState('');
   const [textareaValue, setTextareaValue] = useState('');
@@ -37,9 +39,32 @@ export function NoteForm() {
       id: editingNote ? editingNote.id : crypto.randomUUID(),
     };
 
-    if (editingNote) {
+    // eslint-disable-next-line prettier/prettier
+    if (!editingNote
+      // eslint-disable-next-line prettier/prettier
+      && note.title.trim().length
+      // eslint-disable-next-line prettier/prettier
+      && note.description.trim().length
+    ) {
       axios
-        .put(`http://localhost:5000/notes/${note.id}`, note)
+        .post(SERVER_URL, note)
+        .then(() => {
+          dispatch(notesActions.setNote([...notes, note]));
+          resetFields();
+        })
+        // eslint-disable-next-line no-console
+        .catch((err) => console.log(err));
+    }
+
+    // eslint-disable-next-line prettier/prettier
+    if (editingNote
+      // eslint-disable-next-line prettier/prettier
+      && note.title.trim().length
+      // eslint-disable-next-line prettier/prettier
+      && note.description.trim().length
+    ) {
+      axios
+        .put(`${SERVER_URL}/${note.id}`, note)
         .then(() => {
           dispatch(notesActions.updateNote(note));
           dispatch(notesActions.setEditingNote(null));
@@ -47,15 +72,24 @@ export function NoteForm() {
         })
         // eslint-disable-next-line no-console
         .catch((err) => console.log(err));
-    } else {
-      axios
-        .post('http://localhost:5000/notes', note)
-        .then(() => {
-          dispatch(notesActions.setNote([...notes, note]));
-          resetFields();
-        })
-        // eslint-disable-next-line no-console
-        .catch((err) => console.log(err));
+    }
+
+    // eslint-disable-next-line prettier/prettier
+    if (editingNote
+      // eslint-disable-next-line prettier/prettier
+      && (!note.title.trim().length || !note.description.trim().length)
+    ) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Are you sure you want to delete the note?')) {
+        axios
+          .delete(`${SERVER_URL}/${note.id}`)
+          .then(() => {
+            dispatch(notesActions.clearEditingNote());
+            dispatch(notesActions.deleteNote(note.id));
+          })
+          // eslint-disable-next-line no-console
+          .catch((err) => console.log(err));
+      }
     }
   };
 

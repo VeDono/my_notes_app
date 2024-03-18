@@ -4,7 +4,11 @@
   gap: 25px;
 
   right: 0;
-  position: absolute;
-  margin-top: 35px;
-  margin-right: 35px;
+  overflow-y: auto;
+
+  padding-right: 5px;
+
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
