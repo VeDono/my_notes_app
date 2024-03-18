@@ -29,6 +29,7 @@ export function NoteCard({ note }: Props) {
   };
 
   const deleteNote = () => {
+    // eslint-disable-next-line no-alert
     if (window.confirm('Are you sure you want to delete the note?')) {
       axios
         .delete(`${SERVER_URL}/${note.id}`)
