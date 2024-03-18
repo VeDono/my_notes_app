@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "./static/css/main.e77934f4.css",
-    "main.js": "./static/js/main.b33af2ed.js",
+    "main.css": "./static/css/main.1a3cf754.css",
+    "main.js": "./static/js/main.5e5f7753.js",
+    "static/media/pen-to-square-icon.svg": "./static/media/pen-to-square-icon.25ef355da0c068782a2fd299f9b6a814.svg",
+    "static/media/trash-can-icon.svg": "./static/media/trash-can-icon.d76d47ef5608c98a59b9fa8a7b1ccd3e.svg",
     "index.html": "./index.html",
-    "main.e77934f4.css.map": "./static/css/main.e77934f4.css.map",
-    "main.b33af2ed.js.map": "./static/js/main.b33af2ed.js.map"
+    "static/media/scale-note-icon.svg": "./static/media/scale-note-icon.e240351eaa21635c52c61e7bbb403514.svg",
+    "static/media/cross-icon.svg": "./static/media/cross-icon.33c889ee6afa3ed57684011608af6238.svg",
+    "main.1a3cf754.css.map": "./static/css/main.1a3cf754.css.map",
+    "main.5e5f7753.js.map": "./static/js/main.5e5f7753.js.map"
   },
   "entrypoints": [
-    "static/css/main.e77934f4.css",
-    "static/js/main.b33af2ed.js"
+    "static/css/main.1a3cf754.css",
+    "static/js/main.5e5f7753.js"
   ]
 }
