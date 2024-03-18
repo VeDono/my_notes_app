@@ -1,5 +1,9 @@
 # My Notes App
 
+## DEMO
+
+[DEMO LINK](https://vedono.github.io/my_notes_app/)
+
 ## Description
 
 This is the frontend part of a note-taking application. The application allows users to create, edit, and delete notes.
